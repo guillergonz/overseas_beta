@@ -1,0 +1,100 @@
+.regresar {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	padding: 2px;
+	position: absolute;
+	top: 100px;
+	font-weight: bold;
+	color: #FFF;
+	margin: 0px;
+	text-align: right;
+	width: 783px;
+}
+
+.opciones {
+	font-family: "Segoe UI", "Segoe UI Light", "Segoe UI Semibold", "Lucida Console";
+	font-size: 14px;
+	color: #FFF;
+	border-top-width: thin;
+	border-right-width: thin;
+	border-bottom-width: thin;
+	border-left-width: thin;
+	border-top-style: dotted;
+	border-right-style: dotted;
+	border-bottom-style: dotted;
+	border-left-style: dotted;
+	line-height: normal;
+	background-color: #000;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	margin: 0px;
+}
+h2 {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-style: italic;
+	color: #FFF;
+	text-align: left;
+	margin: 0px;
+	padding: 0px;
+}
+p {
+	font-family: "Segoe UI", "Segoe UI Light", "Segoe UI Semibold", "Lucida Console";
+	font-size: 14px;
+	margin: 10px;
+}
+.mainmenu {
+	font-family: "Segoe UI", "Segoe UI Light", "Segoe UI Semibold", "Lucida Console";
+	font-size: 14px;
+	color: #FFF;
+	background-color: #036;
+	display: block;
+	margin: 0px;
+	border: thin solid #FFF;
+	padding: 0px;
+}
+.content {
+	width: 360px;
+	margin-left: 1px;
+	background-image: none;
+	background-repeat: repeat;
+	background-color: #69F;
+	text-align: center;
+	padding: 10px;
+	margin-right: 1px;
+	height: 100%;
+	top: 300px;
+}
+
+.noshow {
+	display: none;
+}
+.logo {
+	margin: 0px;
+	padding: 0px;
+	height: 31px;
+	width: 256px;
+}
+a {
+	color: #FFF;
+	text-align: left;
+}
+h4 {
+	color: #FFF;
+	text-align: right;
+}
+.back_to_main {
+	text-align: right;
+	width: 1000px;
+	vertical-align: top;
+	font-family: Verdana, Arial, Tahoma;
+}
+
+.image {
+	display: block;
+	margin-top: 30px;
+	margin-right: 10px;
+	margin-bottom: 160px;
+	margin-left: 10px;
+}

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11430.68 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "overseas_beta", "C:\Users\guill_5d1qyrp\source\repos\overseas_beta\", "{4B3DE013-1E91-941A-7320-D09333C6E302}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.8"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_59409"
+		Debug.AspNetCompiler.PhysicalPath = "C:\Users\guill_5d1qyrp\source\repos\overseas_beta\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59409\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_59409"
+		Release.AspNetCompiler.PhysicalPath = "C:\Users\guill_5d1qyrp\source\repos\overseas_beta\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59409\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "59409"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B3DE013-1E91-941A-7320-D09333C6E302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B3DE013-1E91-941A-7320-D09333C6E302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33321AB3-8A6B-46D5-BEA0-FADE4CB985FF}
+	EndGlobalSection
+EndGlobal
