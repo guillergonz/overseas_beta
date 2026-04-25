@@ -269,7 +269,7 @@ function stripIt(x){
                     
 						<option class="alert-info" selected="selected" value="Q"></option>
 						
-						<% 'if userFlag = "Y" AND ((tnow < tlimit or tnow > tlimit2) OR weekday(Now)=7 OR weekday(Now)=1) AND (Session("lang") = "S") then %>
+						<% if userFlag = "Y" AND ((tnow < tlimit or tnow > tlimit2) OR weekday(Now)=7 OR weekday(Now)=1) AND (Session("lang") = "S") then %>
                     
 							<% if userFlag = "Y" AND (tnow < tlimit AND (weekday(Now)=7 OR weekday(Now)=1)) OR (tnow < tlimit) then %>
 								<!--Entrega mismo Día (Hasta las 9:50 AM) (Same Day)-->
@@ -279,7 +279,7 @@ function stripIt(x){
 								<option class="alert-info" value="S"><%= Lang("entregamismodiaSD") %></option>	
 							<% end if %>
 
-						<% 'end if %>
+						<% end if %>
 						
 						<!--Entrega próximo día de entrega (Next Day)-->
 						<option class="alert-info" value="D"><%= Lang("entrega") %></option>

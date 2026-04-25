@@ -95,7 +95,7 @@ Set recordset1 = Recordset1_cmd.Execute
 <link href="overseas.css" rel="stylesheet" type="text/css" >
 
 <link rel="stylesheet" href="jquery-ui/jquery-ui-1.8.16-uidarkness.custom/development-bundle/themes/base/jquery.ui.all.css">
-<link href="jquery-ui-1.10.4.custom/jquery-ui-1.10.4.custom/css/ui-darkness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+<!--<link href="jquery-ui-1.10.4.custom/jquery-ui-1.10.4.custom/css/ui-darkness/jquery-ui-1.10.4.custom.css" rel="stylesheet">-->
 <!--<script src="jquery-ui-1.10.4.custom/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>-->
 <script src="jquery-ui-1.10.4.custom/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
 
@@ -123,20 +123,23 @@ Set recordset1 = Recordset1_cmd.Execute
 	.input focus{
 		border: #FC0;
 	}
-	body,td,th {
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	font-size: 14px;
-	color: #000;
-	}
+	
+    label {
+        font-size: 11px;
+        text-decoration: none;
+    }
+
+    #example {
+        font-size:11px;
+	    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    }
 
 	#dt_example {
 		color: #555555;
 		font-size:14px;
 		font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	}
-	.ui-widget-content {
-		background-color: #555555;
-	}
+	
 	
 	.ui-widget-content  input{
 		color: #555555;
@@ -151,7 +154,8 @@ Set recordset1 = Recordset1_cmd.Execute
 	}
 	
 	#example_info {
-		color:white;
+        font-size:11px;
+        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	}
 	
 	.dataTables, .example_paginate, .example_first, .example_previous  {
@@ -295,36 +299,28 @@ var jq = jQuery.noConflict();
             
             <div class="row">            
 			
-            	<div class="col-xs-4">
+            	<div class="col-xs-12">
                   <form method="post" id="form-date" >
-                    <label>Seleccione por fecha:</label><br>
+                    <label class="col-xs-4">Seleccione por fecha:
                     <input name="fecha" type="text" class="form-control" id="fecha" onChange="form.submit()" value="<%= Parm_date %>" style="width:140px" >
+                    </label>
                     <div id="datepicker"></div>
-                  </form>
-              	</div>  
-                
-				
+                  </form>              	    
                   <form action="reprocess.asp" method="post" id="form-reprocess" >
     
                     <label class="col-xs-3">No. Orden
                       <input  class="form-control" name="orden" type="text"  id="orden" value="" style="width:120px"  >
                     </label>
-                    
                     <label class="col-xs-2"><br>
                         <input  class="btn btn-primary" name="reprocesar" type="submit" id="reprocesar"  value="REPROCESAR" style="width:120px">
                     </label>
                         
                   </form>
-				
+				</div>
             </div>    
-            
-   			<br><br>
-    	
-      
-      
-        	                
-            <div id="demo" style="overflow:hidden" >
-              <table class="table table-striped" id="example"  >
+                        
+            <div id="demo" style="margin-top:4px;overflow:hidden" >
+              <table class="table table-striped" id="example" >
                 <thead>
                 <tr>
                 <th width="148">No Orden</th>
@@ -342,8 +338,6 @@ var jq = jQuery.noConflict();
                 Dim vloop
                 Dim vorder
                 Dim vclass
-                
-            
                 
                 vloop = 0
                 if Not recordset1.EOF then

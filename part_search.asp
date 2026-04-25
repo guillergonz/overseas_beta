@@ -108,13 +108,13 @@ function DisplayParts(){
 		beforeSend: function() {
 			$("#loader").fadeIn("slow");
 			$("#loader").removeClass("display_no").addClass("display_yes");
-			},
+			$("#customerMessage").hide(); // Hide the message
+		},
 		
 		success: function(outputhtml){
 			$("#DisplayParts").html(outputhtml);
 			$("#DisplayParts").className = "display_yes" ;
 			$("#loader").fadeOut("fast");
-			
 		},
 		error: function(xhr,textStatus, errorThrown){
 			alert(textStatus);
@@ -484,7 +484,7 @@ $(document).ready(function() {
 						If len(sql_parts) = 0 Then
 							sql_parts = sql_parts + " field_1 like '%" + p2 + "%' "
 						Else
-							sql_parts = sql_parts + " OR field_1 like '%" + p2 + "%' "
+						 sql_parts = sql_parts + " OR field_1 like '%" + p2 + "%' "
 						End if
 						sql_group = sql_group + " WHEN field_1 like '%" +  p2 + "%' THEN " & CStr(order_count)
 						
@@ -496,7 +496,7 @@ $(document).ready(function() {
 								If len(sql_parts) = 0 Then
 									sql_parts = sql_parts + " field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
 								Else
-									sql_parts = sql_parts + " OR field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
+								 sql_parts = sql_parts + " OR field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
 								End if
 								sql_group = sql_group + " WHEN field_1 like '%" +  oRS_similares.Fields.Item("partid") + "%' THEN " & CStr(order_count)
 								order_count = order_count + 1
@@ -512,7 +512,7 @@ $(document).ready(function() {
 						Else
 							sql_parts = sql_parts + " OR field_1 like '%" + p3 + "%' "
 						End if
-						sql_group = sql_group + " WHEN field_1 like '%" +  p3 + "%' THEN " & CStr(order_count)
+					 sql_group = sql_group + " WHEN field_1 like '%" +  p3 + "%' THEN " & CStr(order_count)
 						
 						Set oRS_similares = Server.CreateObject("ADODB.Recordset")
 						oRS_similares.Open "SELECT partid FROM similar WHERE replacement = '" & p3 & "' or REPLACE(replacement,' ','') = '" & trim(p3) & "' ;", MM_overseaspr_STRING
@@ -522,9 +522,9 @@ $(document).ready(function() {
 								If len(sql_parts) = 0 Then
 									sql_parts = sql_parts + " field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
 								Else
-									sql_parts = sql_parts + " OR field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
+								 sql_parts = sql_parts + " OR field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
 								End if
-								sql_group = sql_group + " WHEN field_1 like '%" +  oRS_similares.Fields.Item("partid") + "%' THEN " & CStr(order_count)
+							 sql_group = sql_group + " WHEN field_1 like '%" +  oRS_similares.Fields.Item("partid") + "%' THEN " & CStr(order_count)
 								order_count = order_count + 1
 								oRS_similares.MoveNext
 							Loop
@@ -536,7 +536,7 @@ $(document).ready(function() {
 						If len(sql_parts) = 0 Then
 							sql_parts = sql_parts + " field_1 like '%" + p4 + "%' "
 						Else
-							sql_parts = sql_parts + " OR field_1 like '%" + p4 + "%' "
+						 sql_parts = sql_parts + " OR field_1 like '%" + p4 + "%' "
 						End if
 						sql_group = sql_group + " WHEN field_1 like '%" +  p4 + "%' THEN " & CStr(order_count)
 						
@@ -548,7 +548,7 @@ $(document).ready(function() {
 								If len(sql_parts) = 0 Then
 									sql_parts = sql_parts + " field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
 								Else
-									sql_parts = sql_parts + " OR field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
+								 sql_parts = sql_parts + " OR field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
 								End if
 								sql_group = sql_group + " WHEN field_1 like '%" +  oRS_similares.Fields.Item("partid") + "%' THEN " & CStr(order_count)
 								
@@ -575,7 +575,7 @@ $(document).ready(function() {
 								If len(sql_parts) = 0 Then
 									sql_parts = sql_parts + " field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
 								Else
-									sql_parts = sql_parts + " OR field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
+								 sql_parts = sql_parts + " OR field_1 like '%" + oRS_similares.Fields.Item("partid") + "%' "
 								End if
 								sql_group = sql_group + " WHEN field_1 like '%" +  oRS_similares.Fields.Item("partid") + "%' THEN " & CStr(order_count)
 								
@@ -621,10 +621,10 @@ $(document).ready(function() {
 					
 					sql_select_price = sql_select_price + " (" + MultipleModelKeywords("field_2",model) + ") "
 					If len(family_keyword_list) > 0 Then
-						sql_family = sql_family + " AND field_6 = '" + family_keyword_list + "' "
-						Session("SQLSearch") = sql_select_price + sql_family + " ;"
+					 sql_family = sql_family + " AND field_6 = '" + family_keyword_list + "' "
+					 Session("SQLSearch") = sql_select_price + sql_family + " ;"
 					else
-						Session("SQLSearch") = sql_select_price + " ORDER BY fam_make_item ;"
+					 Session("SQLSearch") = sql_select_price + " ORDER BY fam_make_item ;"
 					end if	
 					' GGG DisplayParts(15)
                 
@@ -632,7 +632,15 @@ $(document).ready(function() {
                 
                 
                 %>
-                <div id="DisplayParts" ><% DisplayParts(15)%></div> 
+                <div id="DisplayParts" >
+    <% If Session("SQLSearch") = "" Then %>
+        <div id="customerMessage" class="text-center" style="margin: 20px;">
+            <img src="images/Comunicado_2026-04-25.png" alt="Customer Message" style="max-width: 100%; height: auto;">
+        </div>
+    <% Else %>
+        <% DisplayParts(15)%>
+    <% End If %>
+</div> 
                 
               
                 </td>
