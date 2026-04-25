@@ -35,7 +35,7 @@ Dim Recordset1_numRows
 
 Set Recordset1_cmd = Server.CreateObject ("ADODB.Command")
 Recordset1_cmd.ActiveConnection = MM_overseaspr_STRING
-	Recordset1_cmd.CommandText = "SELECT user_level,user_auto_id,user_name,user_pwd,lang,activestatus FROM dbo.users WHERE activestatus in ('A','I') ORDER BY activestatus,user_name; "
+	Recordset1_cmd.CommandText = "SELECT user_level,user_auto_id,user_name,user_pwd,lang,activestatus,citytax,statetax,samedayflag FROM dbo.users WHERE activestatus in ('A','I') ORDER BY activestatus,user_name; "
 
 Recordset1_cmd.Prepared = true
 Set Recordset1 = Recordset1_cmd.Execute
@@ -61,7 +61,8 @@ Recordset1_numRows = 0
 <link href="overseas.css" rel="stylesheet" type="text/css" >
 
 <link rel="stylesheet" href="jquery-ui/jquery-ui-1.8.16-uidarkness.custom/development-bundle/themes/base/jquery.ui.all.css">
-<link href="jquery-ui-1.10.4.custom/jquery-ui-1.10.4.custom/css/ui-darkness/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+<!--<link href="jquery-ui-1.10.4.custom/jquery-ui-1.10.4.custom/css/ui-darkness/jquery-ui-1.10.4.custom.css" rel="stylesheet">-->
+
 <!--<script src="jquery-ui-1.10.4.custom/jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"></script>-->
 <script src="jquery-ui-1.10.4.custom/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.js"></script>
 
@@ -82,22 +83,26 @@ margin:0;
 background-color: #FFF;
 background-repeat: repeat;
 }
+label {
+    font-size: 11px;
+    text-decoration: none;
+}
 .navbar {
     margin-bottom: 0px;
 }
 .input focus{
 	border: #FC0;
 }
-body,td,th {
-font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-font-size: 14px;
-color: #000;
+
+#example {
+    font-size:11px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #dt_example {
+    margin:0px;
+    padding:0px;
 	color: #555555;
-	font-size:14px;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 .ui-widget-content {
 	background-color: #555555;
@@ -252,9 +257,6 @@ $(document).ready(function () {
     	<img style="max-width:256px; margin-top: -7px;" src="/images/oiclogo2.gif">
     </a>
     
-  
-    <br clear="all">
-   
     <div class="row" >
 	
      <br>  
@@ -268,6 +270,9 @@ $(document).ready(function () {
         <th>Name</th>
         <th>Password</th>
         <th>Language</th>
+        <th>City Tax</th>
+        <th>State Tax</th>
+        <th>Sameday</th>
         <th>Active </th>
         <th>Action</th>
         </tr>
@@ -293,7 +298,7 @@ $(document).ready(function () {
         <% 'if trim(Recordset1.Fields.Item("user_pwd").Value) <> "11111" then %>
         <%= trim(Recordset1.Fields.Item("user_pwd").Value) %>
         &nbsp;&nbsp;
-        <input class="ui-state-active ui-corner-all" id="reset" onClick="callfunction('<%=(Recordset1.Fields.Item("user_auto_id").Value)%>')"  type="button" value="reset" >
+        <input class="ui-state-active ui-corner-all" id="resetpwd" onClick="callfunction('<%=(Recordset1.Fields.Item("user_auto_id").Value)%>')"  type="button" value="reset" >
         <% 'End IF %>
         
         </td>
@@ -304,7 +309,7 @@ $(document).ready(function () {
         <div class="btn-group" data-toggle="buttons-checkbox">
         
           <input <% if (trim(Recordset1.Fields.Item("lang").Value) = "S") then response.write("checked"):response.write("")%> type="checkbox" id="group1"  onClick="callfunction4('<%=trim(Recordset1("user_auto_id"))%>')" name="language" value="1"	 >&nbsp;<%= ucase("Español")%>&nbsp;  
-          
+          <br />
           <input <% if (trim(Recordset1.Fields.Item("lang").Value) = "E") then response.write("checked"):response.write("")%>  type="checkbox" id="group2"  onClick="callfunction5('<%=trim(Recordset1("user_auto_id"))%>')" name="language" value="1" >&nbsp;<%= ucase("Inglés")%>&nbsp;
           
   		</div>
@@ -312,6 +317,10 @@ $(document).ready(function () {
         
         </td>
         
+        <td><%= trim(Recordset1.Fields.Item("citytax").Value) %></td>
+        <td><%= trim(Recordset1.Fields.Item("statetax").Value) %></td>
+        <td><%= trim(Recordset1.Fields.Item("samedayflag").Value) %></td>
+
         <td align="center">
         [<%= trim(Recordset1.Fields.Item("activestatus").Value) %>]
         <% if trim(Recordset1.Fields.Item("activestatus").Value) = "A" then %>
@@ -329,11 +338,11 @@ $(document).ready(function () {
         
         if trim(Recordset1.Fields.Item("activestatus").Value) = "A" then %>
          
-            <input class="ui-state-default ui-corner-all" id="reset" onClick="callfunction2('<%=(Recordset1.Fields.Item("user_auto_id").Value)%>')"  type="button" value=" Inactivar Acceso " >
+            <input class="ui-state-default ui-corner-all" id="resetA" onClick="callfunction2('<%=(Recordset1.Fields.Item("user_auto_id").Value)%>')"  type="button" value=" Inactivar Acceso " >
       
         <% Else %>
        
-            <input class="ui-state-active ui-corner-all" id="reset" onClick="callfunction3('<%=(Recordset1.Fields.Item("user_auto_id").Value)%>')"  type="button" value=" Activar Acceso " >
+            <input class="ui-state-active ui-corner-all" id="resetI" onClick="callfunction3('<%=(Recordset1.Fields.Item("user_auto_id").Value)%>')"  type="button" value=" Activar Acceso " >
       
         <% End IF %>
         </td>
