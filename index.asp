@@ -192,7 +192,7 @@ $(document).ready(function() {
         <div data-ertype="content" style="display: none;">
           <ul data-erlabel="Main Category">
           <li> <img class="main" src="easyrotatorimages/1ST.png" /> <img class="thumb" src="easyrotatorimages/1ST.png" /> </li>
-           <li> <img class="main" src="easyrotatorimages/2ND.png" /> <img class="thumb" src="easyrotatorimages/2ND.png" /> </li>
+           <!--<li> <img class="main" src="easyrotatorimages/2ND.png" /> <img class="thumb" src="easyrotatorimages/2ND.png" /> </li>-->
             <li> <img class="main" src="easyrotatorimages/3RD.png" /> <img class="thumb" src="easyrotatorimages/3RD.png" /> </li>
            <li> <img class="main" src="easyrotatorimages/4RTH.png" /> <img class="thumb" src="easyrotatorimages/4RTH.png" /> </li>
            <li> <img class="main" src="easyrotatorimages/5TH.png" /> <img class="thumb" src="easyrotatorimages/5TH.png" /> </li>
