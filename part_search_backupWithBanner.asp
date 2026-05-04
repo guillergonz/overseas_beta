@@ -297,11 +297,11 @@ $(document).ready(function() {
     
 
     <a class="navbar-brand" rel="home" href="#" title="Overseas Import Corporation">
-        			<img style="max-width:256px; margin-top: -7px;" src="/images/oiclogo2.gif"></a><br clear="all">
+        			<img style="max-width:256px; margin-top: -7px;" src="/images/oiclogo2.gif"></a>
                     
 	<form id="search_part2" name="search_part2"  action="part_search.asp" method="post" >
 	   
-   	<div class="table-responsive pull-right col-xs-12 col-sm-2 col-md-2 col-lg-2" style="margin-bottom:0px;overflow-y:hidden;overflow-x:hidden;margin-right:3px;padding:0px" >   
+   	<div class="table-responsive pull-right col-xs-12 col-sm-2 col-md-2 col-lg-2" style="overflow-y:hidden;overflow-x:hidden;margin-right:3px;padding:0px" >   
         
         <img class="pull-right" style="margin-right:90px" id="loader" name="loader" src="images/ajax-loader.gif" width="16" height="16" alt="loader" >
               
@@ -322,7 +322,7 @@ $(document).ready(function() {
                
 	</div>
   
-    <div class="panel panel-default col-xs-12 col-sm-8 col-md-8 col-lg-9" style="padding-bottom:0px;margin-bottom:0px" >
+    <div class="panel panel-default col-xs-12 col-sm-8 col-md-8 col-lg-9" >
    		<a href="<%= MM_Logout %>" class="btn btn-danger pull-right" style="margin-left:6px" ><%= Lang("salir") %></a>
         
         <% if ucase(Session("MM_Username")) = "B001" AND ucase(Session("MM_Multi_Username")) = "CARLE BETANCOURT" then %>
@@ -361,7 +361,7 @@ $(document).ready(function() {
         </div> 
 	</div>
     
-    <div class="panel panel-default col-xs-12 col-sm-8 col-md-8 col-lg-9" style="padding-bottom:0px;margin-bottom:0px" >    
+    <div class="panel panel-default col-xs-12 col-sm-8 col-md-8 col-lg-9" >    
         
         <div class="panel-body">
             <div class="row" >
@@ -632,7 +632,16 @@ $(document).ready(function() {
                 
                 
                 %>
-                <div id="DisplayParts" ><% DisplayParts(15)%></div>
+                <div id="DisplayParts" >
+    <% If Session("SQLSearch") = "" Then %>
+        <div id="customerMessage" class="text-center" style="margin: 20px;">
+            <img src="images/Comunicado_2026-04-25.png" alt="Customer Message" style="max-width: 100%; height: auto;">
+        </div>
+    <% Else %>
+        <% DisplayParts(15)%>
+    <% End If %>
+</div> 
+                
               
                 </td>
                 </tr>
